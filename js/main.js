@@ -36,4 +36,29 @@ const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
 
 
+// FUNZIONE PER AGGIORNARE IL CAROSELLO
+function aggiornaCarousel() {
+    const items = document.querySelectorAll(".item");
 
+    items.forEach((item, index) => {
+        item.classList.remove("active");
+
+        if (index === slideIndex) {
+            item.classList.add("active");
+        }
+    })
+}
+
+
+// ------------- MILESTONE 2 ------------
+// FUNZIONE PER MOSTRARE L'IMMAGINE PRECEDENTE
+prevButton.addEventListener("click", () => {
+    slideIndex = (slideIndex - 1 + images.length) % images.length;
+    aggiornaCarousel(slideImage);
+})
+
+// FUNZIONE PER MOSTRARE L'IMMAGINE SUCCESSIVA
+nextButton.addEventListener("click", () => {
+    slideIndex = (slideIndex + 1) % images.length;
+    aggiornaCarousel(slideImage);
+})
